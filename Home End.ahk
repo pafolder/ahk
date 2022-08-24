@@ -273,8 +273,13 @@ TimerToTurnFunctionModeOff:
 
 
 ~*Insert::
+SetModifiers() return
 ~*Tab::
-~*q::
+SetModifiers() return
+*q::
+    SetModifiers()
+    Send {Blind}q
+    return
 ~*w::
 ~*e::
 ~*r::
