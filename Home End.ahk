@@ -59,18 +59,12 @@ SetCapsLockState AlwaysOff
 ;****************************************************************
 CapsLock::
 	FunctionMode := 1 
-   SetTimer TimerToTurnFunctionModeOff, -10000
+    SetTimer TimerResetModifiers, -10000
 	SetCapsLockState, AlwaysOff
 	return
 ;****************************************************************
 
-
-TimerToTurnFunctionModeOff:
-	ResetModifiers()
-	return
-
-~Escape::
-	SendInput {Blind}{Escape}
+TimerResetModifiers:
 	ResetModifiers()
 	return
 
@@ -85,9 +79,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{1}
+            }
                 ResetModifiers()
                 return
-            }
 *2::
 	if (FunctionMode) {
 		SetModifiers()
@@ -98,9 +92,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{2}
+            }
                 ResetModifiers()
                 return
-            }
 
 *3::
 	if (FunctionMode) {
@@ -113,9 +107,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{3}
+            }
                 ResetModifiers()
                 return
-            }
 
 *4::
 	if (FunctionMode) {
@@ -128,9 +122,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{4}
+            }
                 ResetModifiers()
                 return
-            }
 
 *5::
 	if (FunctionMode) {
@@ -143,9 +137,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{5}
+            }
                 ResetModifiers()
                 return
-            }
 
 *6::
 	if (FunctionMode) {
@@ -158,9 +152,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{6}
+            }
                 ResetModifiers()
                 return
-            }
 
 *7::
 	if (FunctionMode) {
@@ -173,9 +167,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{7}
+            }
                 ResetModifiers()
                 return
-            }
 
 *8::
 	if (FunctionMode) {
@@ -188,9 +182,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{8}
+            }
                 ResetModifiers()
                 return
-            }
 
 *9::
 	if (FunctionMode) {
@@ -203,9 +197,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{9}
+            }
                 ResetModifiers()
                 return
-            }
 
 *0::
 	if (FunctionMode) {
@@ -218,9 +212,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{0}
+            }
                 ResetModifiers()
                 return
-            }
 
 */::
 	if (FunctionMode) {
@@ -233,9 +227,9 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{/}
+            }
                 ResetModifiers()
                 return
-            }
 
 *Delete::
 	if (FunctionMode) {
@@ -245,48 +239,48 @@ TimerToTurnFunctionModeOff:
 			else {
                 SetModifiers()
                 SendInput {Blind}{Delete}
+            }
                 ResetModifiers()
                 return
-            }
 
 ~*+CapsLock::
 	shift := 1
-	SetTimer TimerToTurnFunctionModeOff, -10000
+	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*!CapsLock::
 	alt := 1
-	SetTimer TimerToTurnFunctionModeOff, -10000
+	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*^CapsLock::
 	ctrl := 1
-	SetTimer TimerToTurnFunctionModeOff, -10000
+	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*+!CapsLock::
 	alt := 1
 	shift := 1
-	SetTimer TimerToTurnFunctionModeOff, -10000
+	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*^!CapsLock::
 	alt := 1
 	ctrl := 1
-	SetTimer TimerToTurnFunctionModeOff, -10000
+	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*+^!CapsLock::
 	alt := 1
 	ctrl := 1
 	shift := 1
-	SetTimer TimerToTurnFunctionModeOff, -10000
+	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*+^CapsLock::
 	ctrl := 1
 	shift := 1
-	SetTimer TimerToTurnFunctionModeOff, -10000
+	SetTimer TimerResetModifiers, -10000
 	return
 
 
@@ -297,7 +291,11 @@ TimerToTurnFunctionModeOff:
 ;return
 
 
-
+*Escape::
+	 SetModifiers()
+	 SendInput {Blind}{Escape}
+	 ResetModifiers()
+	 return
 *Insert::
     SetModifiers()
     SendInput {Blind}{Insert}
@@ -463,9 +461,9 @@ TimerToTurnFunctionModeOff:
     SendInput {Blind}{.}
     ResetModifiers()
     return
-*;::
+*SC027::
     SetModifiers()
-    SendInput {Blind}{;}
+    SendInput {Blind}{SC027}
     ResetModifiers()
     return
 *SC029:: ; `
@@ -517,18 +515,15 @@ SetModifiers() {
 
 if (shift) 
 		SendInput {Blind}{Shift Down}
-if (ctrl) 
+if (ctrl)
 		SendInput {Blind}{Ctrl Down}
-if (alt) {
-;SoundBeep 500, 60
-		SendInput {Blind}{Alt Up}
+if (alt)
 		SendInput {Blind}{Alt Down}
-}
+
 return
 }
 
 ResetModifiers() {
-;SoundBeep 500, 60
 	global FunctionMode := 0
 	global ctrl := 0
 	global alt := 0
@@ -537,10 +532,10 @@ if(NOT GetKeyState("Shift","P"))
 	SendInput {Blind}{Shift Up}
 if(NOT GetKeyState("Ctrl","P"))	
 	SendInput {Blind}{Ctrl Up}
-if(GetKeyState("Alt") AND (NOT GetKeyState("Alt","P")))
+;if(GetKeyState("Alt") AND (NOT GetKeyState("Alt","P")))
+if(NOT GetKeyState("Alt","P"))
 	SendInput {Blind}{Alt Up}
 	return
 }
 
-;
 
