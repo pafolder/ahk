@@ -1,4 +1,7 @@
-﻿; 220806
+﻿; 220824
+; Made a great changes to control all the keys by SetModifiers and ResetModifiers
+; Now CapsLock fixes the modifier keys pressed. These keys are added to the next
+; modifier keys pressed with the target (end) key.
 ; CapsLock turns on Fn keys instead of 1...0-=
 ; Ctrl CapsLock turns on Num keys instead of 1...0-+*/Enter
 ; Fn and Num modes will reset automatically in 10 seconds if haven't used
