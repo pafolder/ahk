@@ -82,11 +82,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num1}
-			else
-			Send {Blind}{1}
-	ResetModifiers()
-	return
-
+			else {
+                SetModifiers()
+                Send {Blind}{1}
+                ResetModifiers()
+                return
+            }
 *2::
 	if (FunctionMode) {
 		SetModifiers()
@@ -94,10 +95,12 @@ TimerToTurnFunctionModeOff:
 	}
 	if (NumericMode)
 			Send {Blind}{Num2}
-			else
-			Send {Blind}2
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{2}
+                ResetModifiers()
+                return
+            }
 
 *3::
 	if (FunctionMode) {
@@ -107,10 +110,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num3}
-			else
-			Send {Blind}3
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{3}
+                ResetModifiers()
+                return
+            }
 
 *4::
 	if (FunctionMode) {
@@ -120,10 +125,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num4}
-			else
-			Send {Blind}4
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{4}
+                ResetModifiers()
+                return
+            }
 
 *5::
 	if (FunctionMode) {
@@ -133,10 +140,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num5}
-			else
-			Send {Blind}5
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{5}
+                ResetModifiers()
+                return
+            }
 
 *6::
 	if (FunctionMode) {
@@ -146,10 +155,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num6}
-			else
-			Send {Blind}6
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{6}
+                ResetModifiers()
+                return
+            }
 
 *7::
 	if (FunctionMode) {
@@ -159,10 +170,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num7}
-			else
-			Send {Blind}7
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{7}
+                ResetModifiers()
+                return
+            }
 
 *8::
 	if (FunctionMode) {
@@ -172,10 +185,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num*}
-			else
-			Send {Blind}8
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{8}
+                ResetModifiers()
+                return
+            }
 
 *9::
 	if (FunctionMode) {
@@ -185,10 +200,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 		 	Send {Blind}{Num9}
-			else
-			Send {Blind}9
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{9}
+                ResetModifiers()
+                return
+            }
 
 *0::
 	if (FunctionMode) {
@@ -198,10 +215,12 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num0}
-			else
-			Send {Blind}0
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{0}
+                ResetModifiers()
+                return
+            }
 
 */::
 	if (FunctionMode) {
@@ -211,20 +230,24 @@ TimerToTurnFunctionModeOff:
 	else
 	if (NumericMode)
 			Send {Blind}{Num/}
-			else
-			Send {Blind}{/}
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{/}
+                ResetModifiers()
+                return
+            }
 
 *Delete::
 	if (FunctionMode) {
 		SetModifiers()
 			Send {Blind}{Insert}
 	}		
-	else
-			Send {Blind}{Delete}
-	ResetModifiers()
-	return
+			else {
+                SetModifiers()
+                Send {Blind}{Delete}
+                ResetModifiers()
+                return
+            }
 
 ~*+CapsLock::
 	shift := 1
@@ -458,6 +481,36 @@ TimerToTurnFunctionModeOff:
 *Space::
     SetModifiers()
     Send {Blind}{Space}
+    ResetModifiers()
+    return
+*Left::
+    SetModifiers()
+    Send {Blind}{Left}
+    ResetModifiers()
+    return
+*Right::
+    SetModifiers()
+    Send {Blind}{Right}
+    ResetModifiers()
+    return
+*Up::
+    SetModifiers()
+    Send {Blind}{Up}
+    ResetModifiers()
+    return
+*Down::
+    SetModifiers()
+    Send {Blind}{Down}
+    ResetModifiers()
+    return
+*PgUp::
+    SetModifiers()
+    Send {Blind}{PgUp}
+    ResetModifiers()
+    return
+*PgDn::
+    SetModifiers()
+    Send {Blind}{PgDn}
     ResetModifiers()
     return
 
