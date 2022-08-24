@@ -272,50 +272,191 @@ TimerToTurnFunctionModeOff:
 
 
 
-~*Insert::
-SetModifiers() return
-~*Tab::
-SetModifiers() return
+*Insert::
+    SetModifiers()
+    Send {Blind}{Insert}
+    ResetModifiers()
+    return
+*Tab::
+    SetModifiers()
+    Send {Blind}{Tab}
+    ResetModifiers()
+    return
 *q::
     SetModifiers()
     Send {Blind}q
+    ResetModifiers()
     return
-~*w::
-~*e::
-~*r::
-~*t::
-~*y::
-~*u::
-~*i::
-~*o::
-~*p::
-~*[::
-~*]::
-~*\::
-~*a::
-~*s::
-~*d::
-~*f::
-~*g::
-~*h::
-~*j::
-~*k::
-~*l::
-~*'::
-~*z::
-~*x::
-~*c::
-~*v::
-~*b::
-~*n::
-~*m::
-~*,::
-~*.::
-~*;::
-~*`::
-~*Space::
-	ResetModifiers()
-	return
+*w::
+    SetModifiers()
+    Send {Blind}w
+    ResetModifiers()
+    return
+*e::
+    SetModifiers()
+    Send {Blind}e
+    ResetModifiers()
+    return
+*r::
+    SetModifiers()
+    Send {Blind}r
+    ResetModifiers()
+    return
+*t::
+    SetModifiers()
+    Send {Blind}t
+    ResetModifiers()
+    return
+*y::
+    SetModifiers()
+    Send {Blind}y
+    ResetModifiers()
+    return
+*u::
+    SetModifiers()
+    Send {Blind}u
+    ResetModifiers()
+    return
+*i::
+    SetModifiers()
+    Send {Blind}i
+    ResetModifiers()
+    return
+*o::
+    SetModifiers()
+    Send {Blind}o
+    ResetModifiers()
+    return
+*p::
+    SetModifiers()
+    Send {Blind}p
+    ResetModifiers()
+    return
+*[::
+    SetModifiers()
+    Send {Blind}[
+    ResetModifiers()
+    return
+*]::
+    SetModifiers()
+    Send {Blind}]
+    ResetModifiers()
+    return
+*\::
+    SetModifiers()
+    Send {Blind}\
+    ResetModifiers()
+    return
+*a::
+    SetModifiers()
+    Send {Blind}a
+    ResetModifiers()
+    return
+*s::
+    SetModifiers()
+    Send {Blind}s
+    ResetModifiers()
+    return
+*d::
+    SetModifiers()
+    Send {Blind}d
+    ResetModifiers()
+    return
+*f::
+    SetModifiers()
+    Send {Blind}f
+    ResetModifiers()
+    return
+*g::
+    SetModifiers()
+    Send {Blind}g
+    ResetModifiers()
+    return
+*h::
+    SetModifiers()
+    Send {Blind}h
+    ResetModifiers()
+    return
+*j::
+    SetModifiers()
+    Send {Blind}j
+    ResetModifiers()
+    return
+*k::
+    SetModifiers()
+    Send {Blind}k
+    ResetModifiers()
+    return
+*l::
+    SetModifiers()
+    Send {Blind}l
+    ResetModifiers()
+    return
+*'::
+    SetModifiers()
+    Send {Blind}'
+    ResetModifiers()
+    return
+*z::
+    SetModifiers()
+    Send {Blind}z
+    ResetModifiers()
+    return
+*x::
+    SetModifiers()
+    Send {Blind}x
+    ResetModifiers()
+    return
+*c::
+    SetModifiers()
+    Send {Blind}c
+    ResetModifiers()
+    return
+*v::
+    SetModifiers()
+    Send {Blind}v
+    ResetModifiers()
+    return
+*b::
+    SetModifiers()
+    Send {Blind}b
+    ResetModifiers()
+    return
+*n::
+    SetModifiers()
+    Send {Blind}n
+    ResetModifiers()
+    return
+*m::
+    SetModifiers()
+    Send {Blind}m
+    ResetModifiers()
+    return
+*,::
+    SetModifiers()
+    Send {Blind},
+    ResetModifiers()
+    return
+*.::
+    SetModifiers()
+    Send {Blind}.
+    ResetModifiers()
+    return
+*;::
+    SetModifiers()
+    Send {Blind};
+    ResetModifiers()
+    return
+*`::
+    SetModifiers()
+    Send {Blind}`
+    ResetModifiers()
+    return
+*Space::
+    SetModifiers()
+    Send {Blind}{Space}
+    ResetModifiers()
+    return
 
 
 SetModifiers() {
