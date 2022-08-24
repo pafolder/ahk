@@ -24,36 +24,36 @@ SetCapsLockState AlwaysOff
 ~LCtrl & Left::		
 	if (GetKeyState("RCtrl") && GetKeyState("Shift"))
 	{
-	Send ^+{home}
+	SendInput ^+{home}
 	return
 	}
 	if (GetKeyState("RCtrl"))
 	{
-	Send ^{home}
+	SendInput ^{home}
 	return
 	}
 
 	if (GetKeyState("Shift")) 
-		Send +{home}
+		SendInput +{home}
 	else
-		Send {home}
+		SendInput {home}
 	return
 
 ~LCtrl & Right::		
 	if (GetKeyState("RCtrl") && GetKeyState("Shift"))
 	{
-	Send ^+{end}
+	SendInput ^+{end}
 	return
 	}
 	if (GetKeyState("RCtrl"))
 	{
-	Send ^{end}
+	SendInput ^{end}
 	return
 	}
 	if (GetKeyState("Shift"))
-	Send +{end}
+	SendInput +{end}
 	else
-	Send {end}
+	SendInput {end}
 	return
 
 ;****************************************************************
@@ -70,34 +70,34 @@ TimerToTurnFunctionModeOff:
 	return
 
 ~Escape::
-	Send {Blind}{Escape}
+	SendInput {Blind}{Escape}
 	ResetModifiers()
 	return
 
 *1::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F1}
+			SendInput {Blind}{F1}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num1}
+			SendInput {Blind}{Num1}
 			else {
                 SetModifiers()
-                Send {Blind}{1}
+                SendInput {Blind}{1}
                 ResetModifiers()
                 return
             }
 *2::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F2}
+			SendInput {Blind}{F2}
 	}
 	if (NumericMode)
-			Send {Blind}{Num2}
+			SendInput {Blind}{Num2}
 			else {
                 SetModifiers()
-                Send {Blind}{2}
+                SendInput {Blind}{2}
                 ResetModifiers()
                 return
             }
@@ -105,14 +105,14 @@ TimerToTurnFunctionModeOff:
 *3::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F3}
+			SendInput {Blind}{F3}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num3}
+			SendInput {Blind}{Num3}
 			else {
                 SetModifiers()
-                Send {Blind}{3}
+                SendInput {Blind}{3}
                 ResetModifiers()
                 return
             }
@@ -120,14 +120,14 @@ TimerToTurnFunctionModeOff:
 *4::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F4}
+			SendInput {Blind}{F4}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num4}
+			SendInput {Blind}{Num4}
 			else {
                 SetModifiers()
-                Send {Blind}{4}
+                SendInput {Blind}{4}
                 ResetModifiers()
                 return
             }
@@ -135,14 +135,14 @@ TimerToTurnFunctionModeOff:
 *5::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F5}
+			SendInput {Blind}{F5}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num5}
+			SendInput {Blind}{Num5}
 			else {
                 SetModifiers()
-                Send {Blind}{5}
+                SendInput {Blind}{5}
                 ResetModifiers()
                 return
             }
@@ -150,14 +150,14 @@ TimerToTurnFunctionModeOff:
 *6::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F6}
+			SendInput {Blind}{F6}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num6}
+			SendInput {Blind}{Num6}
 			else {
                 SetModifiers()
-                Send {Blind}{6}
+                SendInput {Blind}{6}
                 ResetModifiers()
                 return
             }
@@ -165,14 +165,14 @@ TimerToTurnFunctionModeOff:
 *7::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F7}
+			SendInput {Blind}{F7}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num7}
+			SendInput {Blind}{Num7}
 			else {
                 SetModifiers()
-                Send {Blind}{7}
+                SendInput {Blind}{7}
                 ResetModifiers()
                 return
             }
@@ -180,14 +180,14 @@ TimerToTurnFunctionModeOff:
 *8::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F8}
+			SendInput {Blind}{F8}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num*}
+			SendInput {Blind}{Num*}
 			else {
                 SetModifiers()
-                Send {Blind}{8}
+                SendInput {Blind}{8}
                 ResetModifiers()
                 return
             }
@@ -195,14 +195,14 @@ TimerToTurnFunctionModeOff:
 *9::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F9}
+			SendInput {Blind}{F9}
 	}
 	else
 	if (NumericMode)
-		 	Send {Blind}{Num9}
+		 	SendInput {Blind}{Num9}
 			else {
                 SetModifiers()
-                Send {Blind}{9}
+                SendInput {Blind}{9}
                 ResetModifiers()
                 return
             }
@@ -210,14 +210,14 @@ TimerToTurnFunctionModeOff:
 *0::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{F10}
+			SendInput {Blind}{F10}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num0}
+			SendInput {Blind}{Num0}
 			else {
                 SetModifiers()
-                Send {Blind}{0}
+                SendInput {Blind}{0}
                 ResetModifiers()
                 return
             }
@@ -225,14 +225,14 @@ TimerToTurnFunctionModeOff:
 */::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{/}
+			SendInput {Blind}{/}
 	}
 	else
 	if (NumericMode)
-			Send {Blind}{Num/}
+			SendInput {Blind}{Num/}
 			else {
                 SetModifiers()
-                Send {Blind}{/}
+                SendInput {Blind}{/}
                 ResetModifiers()
                 return
             }
@@ -240,11 +240,11 @@ TimerToTurnFunctionModeOff:
 *Delete::
 	if (FunctionMode) {
 		SetModifiers()
-			Send {Blind}{Insert}
+			SendInput {Blind}{Insert}
 	}		
 			else {
                 SetModifiers()
-                Send {Blind}{Delete}
+                SendInput {Blind}{Delete}
                 ResetModifiers()
                 return
             }
@@ -300,217 +300,212 @@ TimerToTurnFunctionModeOff:
 
 *Insert::
     SetModifiers()
-    Send {Blind}{Insert}
+    SendInput {Blind}{Insert}
     ResetModifiers()
     return
 *Tab::
     SetModifiers()
-    Send {Blind}{Tab}
+    SendInput {Blind}{Tab}
     ResetModifiers()
     return
 *q::
     SetModifiers()
-    Send {Blind}q
-    ResetModifiers()
-    return
-*w::
-    SetModifiers()
-    Send {Blind}w
+    SendInput {Blind}{q}
     ResetModifiers()
     return
 *e::
     SetModifiers()
-    Send {Blind}e
+    SendInput {Blind}{e}
     ResetModifiers()
     return
 *r::
     SetModifiers()
-    Send {Blind}r
+    SendInput {Blind}{r}
     ResetModifiers()
     return
 *t::
     SetModifiers()
-    Send {Blind}t
+    SendInput {Blind}{t}
     ResetModifiers()
     return
 *y::
     SetModifiers()
-    Send {Blind}y
+    SendInput {Blind}{y}
     ResetModifiers()
     return
 *u::
     SetModifiers()
-    Send {Blind}u
+    SendInput {Blind}{u}
     ResetModifiers()
     return
 *i::
     SetModifiers()
-    Send {Blind}i
+    SendInput {Blind}{i}
     ResetModifiers()
     return
 *o::
     SetModifiers()
-    Send {Blind}o
+    SendInput {Blind}{o}
     ResetModifiers()
     return
 *p::
     SetModifiers()
-    Send {Blind}p
+    SendInput {Blind}{p}
     ResetModifiers()
     return
-*[::
+*SC01A:: ; [
     SetModifiers()
-    Send {Blind}[
+    SendInput {Blind}{SC01A}
     ResetModifiers()
     return
-*]::
+*SC01B:: ; ]
     SetModifiers()
-    Send {Blind}]
+    SendInput {Blind}{SC01B}
     ResetModifiers()
     return
 *\::
     SetModifiers()
-    Send {Blind}\
+    SendInput {Blind}{\}
     ResetModifiers()
     return
 *a::
     SetModifiers()
-    Send {Blind}a
+    SendInput {Blind}{a}
     ResetModifiers()
     return
 *s::
     SetModifiers()
-    Send {Blind}s
+    SendInput {Blind}{s}
     ResetModifiers()
     return
 *d::
     SetModifiers()
-    Send {Blind}d
+    SendInput {Blind}{d}
     ResetModifiers()
     return
 *f::
     SetModifiers()
-    Send {Blind}f
+    SendInput {Blind}{f}
     ResetModifiers()
     return
 *g::
     SetModifiers()
-    Send {Blind}g
+    SendInput {Blind}{g}
     ResetModifiers()
     return
 *h::
     SetModifiers()
-    Send {Blind}h
+    SendInput {Blind}{h}
     ResetModifiers()
     return
 *j::
     SetModifiers()
-    Send {Blind}j
+    SendInput {Blind}{j}
     ResetModifiers()
     return
 *k::
     SetModifiers()
-    Send {Blind}k
+    SendInput {Blind}{k}
     ResetModifiers()
     return
 *l::
     SetModifiers()
-    Send {Blind}l
+    SendInput {Blind}{l}
     ResetModifiers()
     return
-*'::
+*SC028:: ; '
     SetModifiers()
-    Send {Blind}'
+    SendInput {Blind}{SC028}
     ResetModifiers()
     return
 *z::
     SetModifiers()
-    Send {Blind}z
+    SendInput {Blind}{z}
     ResetModifiers()
     return
 *x::
     SetModifiers()
-    Send {Blind}x
+    SendInput {Blind}{x}
     ResetModifiers()
     return
 *c::
     SetModifiers()
-    Send {Blind}c
+    SendInput {Blind}{c}
     ResetModifiers()
     return
 *v::
     SetModifiers()
-    Send {Blind}v
+    SendInput {Blind}{v}
     ResetModifiers()
     return
 *b::
     SetModifiers()
-    Send {Blind}b
+    SendInput {Blind}{b}
     ResetModifiers()
     return
 *n::
     SetModifiers()
-    Send {Blind}n
+    SendInput {Blind}{n}
     ResetModifiers()
     return
 *m::
     SetModifiers()
-    Send {Blind}m
+    SendInput {Blind}{m}
     ResetModifiers()
     return
 *,::
     SetModifiers()
-    Send {Blind},
+    SendInput {Blind}{,}
     ResetModifiers()
     return
 *.::
     SetModifiers()
-    Send {Blind}.
+    SendInput {Blind}{.}
     ResetModifiers()
     return
 *;::
     SetModifiers()
-    Send {Blind};
+    SendInput {Blind}{;}
     ResetModifiers()
     return
-*`::
+*SC029:: ; `
     SetModifiers()
-    Send {Blind}`
+    SendInput {Blind}{SC029}
     ResetModifiers()
     return
 *Space::
     SetModifiers()
-    Send {Blind}{Space}
+    SendInput {Blind}{Space}
     ResetModifiers()
     return
 *Left::
     SetModifiers()
-    Send {Blind}{Left}
+    SendInput {Blind}{Left}
     ResetModifiers()
     return
 *Right::
     SetModifiers()
-    Send {Blind}{Right}
+    SendInput {Blind}{Right}
     ResetModifiers()
     return
 *Up::
     SetModifiers()
-    Send {Blind}{Up}
+    SendInput {Blind}{Up}
     ResetModifiers()
     return
 *Down::
     SetModifiers()
-    Send {Blind}{Down}
+    SendInput {Blind}{Down}
     ResetModifiers()
     return
 *PgUp::
     SetModifiers()
-    Send {Blind}{PgUp}
+    SendInput {Blind}{PgUp}
     ResetModifiers()
     return
 *PgDn::
     SetModifiers()
-    Send {Blind}{PgDn}
+    SendInput {Blind}{PgDn}
     ResetModifiers()
     return
 
@@ -521,13 +516,13 @@ SetModifiers() {
 	global shift
 
 if (shift) 
-		Send {Blind}{Shift Down}
+		SendInput {Blind}{Shift Down}
 if (ctrl) 
-		Send {Blind}{Ctrl Down}
+		SendInput {Blind}{Ctrl Down}
 if (alt) {
 ;SoundBeep 500, 60
-		Send {Blind}{Alt Up}
-		Send {Blind}{Alt Down}
+		SendInput {Blind}{Alt Up}
+		SendInput {Blind}{Alt Down}
 }
 return
 }
@@ -539,11 +534,11 @@ ResetModifiers() {
 	global alt := 0
 	global shift := 0
 if(NOT GetKeyState("Shift","P"))	
-	Send {Blind}{Shift Up}
+	SendInput {Blind}{Shift Up}
 if(NOT GetKeyState("Ctrl","P"))	
-	Send {Blind}{Ctrl Up}
+	SendInput {Blind}{Ctrl Up}
 if(GetKeyState("Alt") AND (NOT GetKeyState("Alt","P")))
-	Send {Blind}{Alt Up}
+	SendInput {Blind}{Alt Up}
 	return
 }
 
