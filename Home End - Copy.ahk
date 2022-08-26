@@ -22,34 +22,35 @@ SetCapsLockState AlwaysOff
 
 
 ~LCtrl & Left::		
-	if (GetKeyState("RCtrl", "P") && GetKeyState("Shift", "P"))
+	if (GetKeyState("RCtrl") && GetKeyState("Shift"))
 	{
 	SendInput ^+{home}
 	return
 	}
-	if (GetKeyState("RCtrl", "P"))
+	if (GetKeyState("RCtrl"))
 	{
 	SendInput ^{home}
 	return
 	}
-	if (GetKeyState("Shift", "P"))
+
+	if (GetKeyState("Shift")) 
 		SendInput +{home}
 	else
 		SendInput {home}
 	return
 
 ~LCtrl & Right::		
-	if (GetKeyState("RCtrl", "P") && GetKeyState("Shift", "P"))
+	if (GetKeyState("RCtrl") && GetKeyState("Shift"))
 	{
 	SendInput ^+{end}
 	return
 	}
-	if (GetKeyState("RCtrl", "P"))
+	if (GetKeyState("RCtrl"))
 	{
 	SendInput ^{end}
 	return
 	}
-	if (GetKeyState("Shift", "P"))
+	if (GetKeyState("Shift"))
 	SendInput +{end}
 	else
 	SendInput {end}
@@ -531,8 +532,8 @@ if(NOT GetKeyState("Shift","P"))
 	SendInput {Blind}{Shift Up}
 if(NOT GetKeyState("Ctrl","P"))	
 	SendInput {Blind}{Ctrl Up}
-if(GetKeyState("Alt") AND (NOT GetKeyState("Alt","P")))
-;if(NOT GetKeyState("Alt","P"))
+;if(GetKeyState("Alt") AND (NOT GetKeyState("Alt","P")))
+if(NOT GetKeyState("Alt","P"))
 	SendInput {Blind}{Alt Up}
 	return
 }
