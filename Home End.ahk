@@ -450,14 +450,14 @@ TimerResetModifiers:
     SendInput {Blind}{m}
     ResetModifiers()
     return
-*,::
+*SC033::
     SetModifiers()
-    SendInput {Blind}{,}
+    SendInput {Blind}{SC033}
     ResetModifiers()
     return
-*.::
+*SC034::
     SetModifiers()
-    SendInput {Blind}{.}
+    SendInput {Blind}{SC034}
     ResetModifiers()
     return
 *SC027::
@@ -536,5 +536,3 @@ if(GetKeyState("Alt") AND (NOT GetKeyState("Alt","P")))
 	SendInput {Blind}{Alt Up}
 	return
 }
-
-
