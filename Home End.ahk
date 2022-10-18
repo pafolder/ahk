@@ -214,6 +214,34 @@ TimerResetModifiers:
             }
                 ResetModifiers()
                 return
+*-::
+	if (FunctionMode) {
+		SetModifiers()
+			SendInput {Blind}{F11}
+	}
+	else
+	if (NumericMode)
+			SendInput {Blind}{Num-}
+			else {
+                SetModifiers()
+                SendInput {Blind}{-}
+            }
+                ResetModifiers()
+                return
+*=::
+	if (FunctionMode) {
+		SetModifiers()
+			SendInput {Blind}{F12}
+	}
+	else
+	if (NumericMode)
+			SendInput {Blind}{Num=}
+			else {
+                SetModifiers()
+                SendInput {Blind}{=}
+            }
+                ResetModifiers()
+                return
 
 */::
 	if (FunctionMode) {
@@ -475,34 +503,22 @@ TimerResetModifiers:
     SendInput {Blind}{Space}
     ResetModifiers()
     return
-*Left::
-    SetModifiers()
-    SendInput {Blind}{Left}
+~*Left::
     ResetModifiers()
     return
-*Right::
-    SetModifiers()
-    SendInput {Blind}{Right}
+~*Right::
     ResetModifiers()
     return
-*Up::
-    SetModifiers()
-    SendInput {Blind}{Up}
+~*Up::
     ResetModifiers()
     return
-*Down::
-    SetModifiers()
-    SendInput {Blind}{Down}
+~*Down::
     ResetModifiers()
     return
-*PgUp::
-    SetModifiers()
-    SendInput {Blind}{PgUp}
+~*PgUp::
     ResetModifiers()
     return
-*PgDn::
-    SetModifiers()
-    SendInput {Blind}{PgDn}
+~*PgDn::
     ResetModifiers()
     return
 
