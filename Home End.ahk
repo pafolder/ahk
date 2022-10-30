@@ -8,11 +8,12 @@
 ; Right Ctrl and left/right arrow keys let move over the words
 ; Left Ctrl and left/right arrow keys move to the begining/end of the line
 ; Right+Left Ctrl keys and left/right arrow keys move to the begining/end of the text
-; Alt+CapsLocks - toggles CapsLock as usual
+; Pressing CapsLocks for 3 times toggles CapsLock as it was by default
 
 shift := 0
 ctrl := 0
 alt := 0
+capsLockPressCount := 0
 
 ResetModifiers()
 SetCapsLockState AlwaysOff
@@ -20,7 +21,6 @@ SetCapsLockState AlwaysOff
 ^WheelUp::SoundSet +5
 ^WheelDown::SoundSet -5
 
-LAlt & CapsLock::
 SetCapsLockState % !GetKeyState("CapsLock", "T")
 return
 
@@ -62,7 +62,11 @@ return
 CapsLock::
 	FunctionMode := 1 
     SetTimer TimerResetModifiers, -10000
-	SetCapsLockState, AlwaysOff
+    capsLockPressCount := capsLockPressCount + 1
+    if (capsLockPressCount = 3) {
+        capsLockPressCount := 0
+    SetCapsLockState % !GetKeyState("CapsLock", "T")
+    }
 	return
 ;****************************************************************
 
@@ -546,6 +550,7 @@ ResetModifiers() {
 	global ctrl := 0
 	global alt := 0
 	global shift := 0
+    capsLockPressCount := 0
 if(NOT GetKeyState("Shift","P"))	
 	SendInput {Blind}{Shift Up}
 if(NOT GetKeyState("Ctrl","P"))	
