@@ -65,6 +65,7 @@ CapsLock::
     capsLockPressCount := capsLockPressCount + 1
     if (capsLockPressCount = 3) {
         capsLockPressCount := 0
+		FunctionMode := 0
     SetCapsLockState % !GetKeyState("CapsLock", "T")
     }
 	return
