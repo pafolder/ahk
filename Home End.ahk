@@ -8,7 +8,7 @@
 ; Right Ctrl and left/right arrow keys let move over the words
 ; Left Ctrl and left/right arrow keys move to the begining/end of the line
 ; Right+Left Ctrl keys and left/right arrow keys move to the begining/end of the text
-
+; Alt+CapsLocks - toggles CapsLock as usual
 
 shift := 0
 ctrl := 0
@@ -20,6 +20,9 @@ SetCapsLockState AlwaysOff
 ^WheelUp::SoundSet +5
 ^WheelDown::SoundSet -5
 
+LAlt & CapsLock::
+SetCapsLockState % !GetKeyState("CapsLock", "T")
+return
 
 ~LCtrl & Left::		
 	if (GetKeyState("RCtrl", "P") && GetKeyState("Shift", "P"))
