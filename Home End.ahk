@@ -279,33 +279,39 @@ TimerResetModifiers:
                 return
 
 ~*+CapsLock::
+    capsLockPressCount := 0
 	shift := 1
 	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*!CapsLock::
+    capsLockPressCount := 0
 	alt := 1
 	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*^CapsLock::
+    capsLockPressCount := 0
 	ctrl := 1
 	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*+!CapsLock::
+    capsLockPressCount := 0
 	alt := 1
 	shift := 1
 	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*^!CapsLock::
+    capsLockPressCount := 0
 	alt := 1
 	ctrl := 1
 	SetTimer TimerResetModifiers, -10000
 	return
 
 ~*+^!CapsLock::
+    capsLockPressCount := 0
 	alt := 1
 	ctrl := 1
 	shift := 1
@@ -313,18 +319,17 @@ TimerResetModifiers:
 	return
 
 ~*+^CapsLock::
+    capsLockPressCount := 0
 	ctrl := 1
 	shift := 1
 	SetTimer TimerResetModifiers, -10000
 	return
-
 
 ;as:=Getkeystate("Alt")
 ;ss:=Getkeystate("Shift")
 ;cs:=Getkeystate("Ctrl")
 ;MsgBox, Tab  as=%as%, ss=%ss%, cs=%cs%, FunctionMode=%FunctionMode%
 ;return
-
 
 *Escape::
 	 SetModifiers()
