@@ -1,4 +1,4 @@
-﻿; 220824
+; 221030
 ; Made a great changes to control all the keys by SetModifiers and ResetModifiers
 ; Now CapsLock fixes the modifier keys pressed. These keys are added to the next
 ; modifier keys pressed with the target (end) key.
@@ -13,15 +13,16 @@
 shift := 0
 ctrl := 0
 alt := 0
+capslock := 0
 capsLockPressCount := 0
 
 ResetModifiers()
-SetCapsLockState AlwaysOff
+SetCapsLockState, AlwaysOff
 
 ^WheelUp::SoundSet +5
-^WheelDown::SoundSet -5
+ return
 
-SetCapsLockState % !GetKeyState("CapsLock", "T")
+^WheelDown::SoundSet -5
 return
 
 ~LCtrl & Left::		
@@ -61,12 +62,17 @@ return
 ;****************************************************************
 CapsLock::
 	FunctionMode := 1 
+    SetCapsLockState, Off 
+    SetCapsLockState, AlwaysOff
     SetTimer TimerResetModifiers, -10000
     capsLockPressCount := capsLockPressCount + 1
-    if (capsLockPressCount = 3) {
+    if (capsLockPressCount == 3) {
         capsLockPressCount := 0
 		FunctionMode := 0
-    SetCapsLockState % !GetKeyState("CapsLock", "T")
+        if (capslock == 1)
+            capslock := 0
+        else
+            capslock := 1
     }
 	return
 ;****************************************************************
@@ -351,6 +357,11 @@ TimerResetModifiers:
     SendInput {Blind}{q}
     ResetModifiers()
     return
+*w::
+    SetModifiers()
+    SendInput {Blind}{w}
+    ResetModifiers()
+    return
 *e::
     SetModifiers()
     SendInput {Blind}{e}
@@ -535,12 +546,13 @@ TimerResetModifiers:
     ResetModifiers()
     return
 
-
 SetModifiers() {
 	global ctrl
 	global alt
 	global shift
-
+    global capslock
+    global FunctionMode
+    global capsLockPressCount
 if (shift) 
 		SendInput {Blind}{Shift Down}
 if (ctrl)
@@ -548,21 +560,27 @@ if (ctrl)
 if (alt)
 		SendInput {Blind}{Alt Down}
 
+    if (capslock==0)
+    SetCapsLockState, Off 
+    else
+    SetCapsLockState, On
 return
 }
 
 ResetModifiers() {
 	global FunctionMode := 0
-	global ctrl := 0
+    global capsLockPressCount := 0
+    global ctrl := 0
 	global alt := 0
 	global shift := 0
-    capsLockPressCount := 0
-if(NOT GetKeyState("Shift","P"))	
+if (NOT GetKeyState("Shift", "P"))	
 	SendInput {Blind}{Shift Up}
-if(NOT GetKeyState("Ctrl","P"))	
+if (NOT GetKeyState("Ctrl", "P"))	
 	SendInput {Blind}{Ctrl Up}
-if(GetKeyState("Alt") AND (NOT GetKeyState("Alt","P")))
-;if(NOT GetKeyState("Alt","P"))
+if (GetKeyState("Alt") AND (NOT GetKeyState("Alt", "P")))
+;if (NOT GetKeyState("Alt", "P"))
 	SendInput {Blind}{Alt Up}
+    SetCapsLockState, Off 
+    SetCapsLockState, AlwaysOff
 	return
 }
