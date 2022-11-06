@@ -1,4 +1,4 @@
-; 221030
+; 221105
 ; Made a great changes to control all the keys by SetModifiers and ResetModifiers
 ; Now CapsLock fixes the modifier keys pressed. These keys are added to the next
 ; modifier keys pressed with the target (end) key.
@@ -42,7 +42,7 @@ return
 		SendInput {home}
 	return
 
-~LCtrl & Right::		
+~LCtrl & Right::
 	if (GetKeyState("RCtrl", "P") && GetKeyState("Shift", "P"))
 	{
 	SendInput ^+{end}
@@ -82,195 +82,124 @@ TimerResetModifiers:
 	return
 
 *1::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F1}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num1}
-			else {
-                SetModifiers()
-                SendInput {Blind}{1}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{1}
+    
+    ResetModifiers()
+    return
+
 *2::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F2}
-	}
-	if (NumericMode)
-			SendInput {Blind}{Num2}
-			else {
-                SetModifiers()
-                SendInput {Blind}{2}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{2}
+    
+    ResetModifiers()
+    return
 
 *3::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F3}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num3}
-			else {
-                SetModifiers()
-                SendInput {Blind}{3}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{3}
+    
+    ResetModifiers()
+    return
 
 *4::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F4}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num4}
-			else {
-                SetModifiers()
-                SendInput {Blind}{4}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{4}
+    
+    ResetModifiers()
+    return
 
 *5::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F5}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num5}
-			else {
-                SetModifiers()
-                SendInput {Blind}{5}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{5}
+    
+    ResetModifiers()
+    return
 
 *6::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F6}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num6}
-			else {
-                SetModifiers()
-                SendInput {Blind}{6}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{6}
+    
+    ResetModifiers()
+    return
 
 *7::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F7}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num7}
-			else {
-                SetModifiers()
-                SendInput {Blind}{7}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{7}
+    
+    ResetModifiers()
+    return
 
 *8::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F8}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num*}
-			else {
-                SetModifiers()
-                SendInput {Blind}{8}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{8}
+    
+    ResetModifiers()
+    return
 
 *9::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F9}
-	}
-	else
-	if (NumericMode)
-		 	SendInput {Blind}{Num9}
-			else {
-                SetModifiers()
-                SendInput {Blind}{9}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{9}
+    
+    ResetModifiers()
+    return
 
 *0::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+    if (FunctionMode)
 			SendInput {Blind}{F10}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num0}
-			else {
-                SetModifiers()
-                SendInput {Blind}{0}
-            }
-                ResetModifiers()
-                return
-*-::
-	if (FunctionMode) {
-		SetModifiers()
-			SendInput {Blind}{F11}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num-}
-			else {
-                SetModifiers()
-                SendInput {Blind}{-}
-            }
-                ResetModifiers()
-                return
-*=::
-	if (FunctionMode) {
-		SetModifiers()
-			SendInput {Blind}{F12}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num=}
-			else {
-                SetModifiers()
-                SendInput {Blind}{=}
-            }
-                ResetModifiers()
-                return
+    else
+            SendInput {Blind}{0}
+    
+    ResetModifiers()
+    return
 
-*/::
-	if (FunctionMode) {
-		SetModifiers()
-			SendInput {Blind}{/}
-	}
-	else
-	if (NumericMode)
-			SendInput {Blind}{Num/}
-			else {
-                SetModifiers()
-                SendInput {Blind}{/}
-            }
-                ResetModifiers()
-                return
+*-::
+	SetModifiers()
+    if (FunctionMode)
+			SendInput {Blind}{F11}
+    else
+            SendInput {Blind}{-}
+    
+    ResetModifiers()
+    return
+
+*=::
+	SetModifiers()
+    if (FunctionMode)
+			SendInput {Blind}{F12}
+    else
+            SendInput {Blind}{=}
+    
+    ResetModifiers()
+    return
 
 *Delete::
 	if (FunctionMode) {
