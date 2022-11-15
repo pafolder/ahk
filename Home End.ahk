@@ -1,4 +1,5 @@
-; 221105
+; 221115
+; Refactored. -7000
 ; Made a great changes to control all the keys by SetModifiers and ResetModifiers
 ; Now CapsLock fixes the modifier keys pressed. These keys are added to the next
 ; modifier keys pressed with the target (end) key.
@@ -61,10 +62,10 @@ return
 
 ;****************************************************************
 CapsLock::
-	FunctionMode := 1 
-    SetCapsLockState, Off 
+	FunctionMode := 1
+    SetCapsLockState, Off
     SetCapsLockState, AlwaysOff
-    SetTimer TimerResetModifiers, -10000
+    SetTimer TimerResetModifiers, -7000
     capsLockPressCount := capsLockPressCount + 1
     if (capsLockPressCount == 3) {
         capsLockPressCount := 0
@@ -202,69 +203,60 @@ TimerResetModifiers:
     return
 
 *Delete::
-	if (FunctionMode) {
-		SetModifiers()
+	SetModifiers()
+	if (FunctionMode)
 			SendInput {Blind}{Insert}
-	}		
-			else {
-                SetModifiers()
-                SendInput {Blind}{Delete}
-            }
-                ResetModifiers()
-                return
+	else
+            SendInput {Blind}{Delete}
+    ResetModifiers()
+    return
 
-~*+CapsLock::
++CapsLock::
     capsLockPressCount := 0
 	shift := 1
-	SetTimer TimerResetModifiers, -10000
+	SetTimer TimerResetModifiers, -7000
 	return
 
-~*!CapsLock::
+!CapsLock::
     capsLockPressCount := 0
 	alt := 1
-	SetTimer TimerResetModifiers, -10000
+	SetTimer TimerResetModifiers, -7000
 	return
 
-~*^CapsLock::
+^CapsLock::
     capsLockPressCount := 0
 	ctrl := 1
-	SetTimer TimerResetModifiers, -10000
+	SetTimer TimerResetModifiers, -7000
 	return
 
-~*+!CapsLock::
++!CapsLock::
     capsLockPressCount := 0
 	alt := 1
 	shift := 1
-	SetTimer TimerResetModifiers, -10000
+	SetTimer TimerResetModifiers, -7000
 	return
 
-~*^!CapsLock::
+^!CapsLock::
     capsLockPressCount := 0
 	alt := 1
 	ctrl := 1
-	SetTimer TimerResetModifiers, -10000
+	SetTimer TimerResetModifiers, -7000
 	return
 
-~*+^!CapsLock::
++^!CapsLock::
     capsLockPressCount := 0
 	alt := 1
 	ctrl := 1
 	shift := 1
-	SetTimer TimerResetModifiers, -10000
+	SetTimer TimerResetModifiers, -7000
 	return
 
-~*+^CapsLock::
++^CapsLock::
     capsLockPressCount := 0
 	ctrl := 1
 	shift := 1
-	SetTimer TimerResetModifiers, -10000
+	SetTimer TimerResetModifiers, -7000
 	return
-
-;as:=Getkeystate("Alt")
-;ss:=Getkeystate("Shift")
-;cs:=Getkeystate("Ctrl")
-;MsgBox, Tab  as=%as%, ss=%ss%, cs=%cs%, FunctionMode=%FunctionMode%
-;return
 
 *Escape::
 	 SetModifiers()
@@ -476,13 +468,13 @@ TimerResetModifiers:
     return
 
 SetModifiers() {
-	global ctrl
 	global alt
+	global ctrl
 	global shift
     global capslock
     global FunctionMode
     global capsLockPressCount
-if (shift) 
+if (shift)
 		SendInput {Blind}{Shift Down}
 if (ctrl)
 		SendInput {Blind}{Ctrl Down}
@@ -490,26 +482,33 @@ if (alt)
 		SendInput {Blind}{Alt Down}
 
     if (capslock==0)
-    SetCapsLockState, Off 
+    SetCapsLockState, Off
     else
     SetCapsLockState, On
 return
 }
 
 ResetModifiers() {
-	global FunctionMode := 0
-    global capsLockPressCount := 0
-    global ctrl := 0
-	global alt := 0
-	global shift := 0
-if (NOT GetKeyState("Shift", "P"))	
+	global FunctionMode
+    global capsLockPressCount
+    global ctrl
+	global alt
+	global shift
+
+if ((shift == 1) AND (NOT GetKeyState("Shift", "P")))
 	SendInput {Blind}{Shift Up}
-if (NOT GetKeyState("Ctrl", "P"))	
+if ((ctrl == 1) AND (NOT GetKeyState("Ctrl", "P")))
 	SendInput {Blind}{Ctrl Up}
-if (GetKeyState("Alt") AND (NOT GetKeyState("Alt", "P")))
-;if (NOT GetKeyState("Alt", "P"))
+if ((alt == 1) AND (NOT GetKeyState("Alt", "P")) )
 	SendInput {Blind}{Alt Up}
-    SetCapsLockState, Off 
+
+	FunctionMode := 0
+    capsLockPressCount := 0
+    ctrl := 0
+	alt := 0
+	shift := 0
+	
+    SetCapsLockState, Off
     SetCapsLockState, AlwaysOff
 	return
 }
