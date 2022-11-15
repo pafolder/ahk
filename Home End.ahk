@@ -18,7 +18,7 @@ capslock := 0
 capsLockPressCount := 0
 
 ResetModifiers()
-SetCapsLockState, AlwaysOff
+;SetCapsLockState, AlwaysOff
 
 ^WheelUp::SoundSet +5
  return
@@ -61,11 +61,26 @@ return
 	return
 
 ;****************************************************************
-CapsLock::
+*CapsLock::
+    modifiersPressed := 0
+    if (GetKeyState("Shift", "P")) {
+    shift := 1
+    modifiersPressed := 1
+    }
+    if (GetKeyState("Alt", "P")) {
+    alt := 1
+    modifiersPressed := 1
+    }
+    if (GetKeyState("Ctrl", "P")) {
+    ctrl := 1
+    modifiersPressed := 1
+    }
+    SetTimer TimerResetModifiers, -7000
+    if (modifiersPressed == 1)
+    return
+
 	FunctionMode := 1
     SetCapsLockState, Off
-    SetCapsLockState, AlwaysOff
-    SetTimer TimerResetModifiers, -7000
     capsLockPressCount := capsLockPressCount + 1
     if (capsLockPressCount == 3) {
         capsLockPressCount := 0
@@ -211,52 +226,52 @@ TimerResetModifiers:
     ResetModifiers()
     return
 
-+CapsLock::
-    capsLockPressCount := 0
-	shift := 1
-	SetTimer TimerResetModifiers, -7000
-	return
-
-!CapsLock::
-    capsLockPressCount := 0
-	alt := 1
-	SetTimer TimerResetModifiers, -7000
-	return
-
-^CapsLock::
-    capsLockPressCount := 0
-	ctrl := 1
-	SetTimer TimerResetModifiers, -7000
-	return
-
-+!CapsLock::
-    capsLockPressCount := 0
-	alt := 1
-	shift := 1
-	SetTimer TimerResetModifiers, -7000
-	return
-
-^!CapsLock::
-    capsLockPressCount := 0
-	alt := 1
-	ctrl := 1
-	SetTimer TimerResetModifiers, -7000
-	return
-
-+^!CapsLock::
-    capsLockPressCount := 0
-	alt := 1
-	ctrl := 1
-	shift := 1
-	SetTimer TimerResetModifiers, -7000
-	return
-
-+^CapsLock::
-    capsLockPressCount := 0
-	ctrl := 1
-	shift := 1
-	SetTimer TimerResetModifiers, -7000
-	return
+;+CapsLock::
+;    capsLockPressCount := 0
+;	shift := 1
+;	SetTimer TimerResetModifiers, -7000
+;	return
+;
+;!CapsLock::
+;    capsLockPressCount := 0
+;	alt := 1
+;	SetTimer TimerResetModifiers, -7000
+;	return
+;
+;^CapsLock::
+;    capsLockPressCount := 0
+;	ctrl := 1
+;	SetTimer TimerResetModifiers, -7000
+;	return
+;
+;+!CapsLock::
+;    capsLockPressCount := 0
+;	alt := 1
+;	shift := 1
+;	SetTimer TimerResetModifiers, -7000
+;	return
+;
+;^!CapsLock::
+;    capsLockPressCount := 0
+;	alt := 1
+;	ctrl := 1
+;	SetTimer TimerResetModifiers, -7000
+;	return
+;
+;+^!CapsLock::
+;    capsLockPressCount := 0
+;	alt := 1
+;	ctrl := 1
+;	shift := 1
+;	SetTimer TimerResetModifiers, -7000
+;	return
+;
+;+^CapsLock::
+;    capsLockPressCount := 0
+;	ctrl := 1
+;	shift := 1
+;	SetTimer TimerResetModifiers, -7000
+;	return
 
 *Escape::
 	 SetModifiers()
@@ -509,6 +524,5 @@ if ((alt == 1) AND (NOT GetKeyState("Alt", "P")) )
 	shift := 0
 	
     SetCapsLockState, Off
-    SetCapsLockState, AlwaysOff
 	return
 }
