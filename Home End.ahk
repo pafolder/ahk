@@ -19,7 +19,6 @@ capslock := 0
 capsLockPressCount := 0
 
 ResetModifiers()
-;SetCapsLockState, AlwaysOff
 
 ^WheelUp::SoundSet +5
  return
