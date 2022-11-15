@@ -1,5 +1,6 @@
 ; 221115
-; Refactored. -7000
+; Refactored. Working now on press CapsLock. Also CapsLock Tab added to switch layout.
+; Timeot sent to -7000.
 ; Made a great changes to control all the keys by SetModifiers and ResetModifiers
 ; Now CapsLock fixes the modifier keys pressed. These keys are added to the next
 ; modifier keys pressed with the target (end) key.
@@ -213,7 +214,7 @@ TimerResetModifiers:
 			SendInput {Blind}{F12}
     else
             SendInput {Blind}{=}
-    
+
     ResetModifiers()
     return
 
@@ -226,52 +227,14 @@ TimerResetModifiers:
     ResetModifiers()
     return
 
-;+CapsLock::
-;    capsLockPressCount := 0
-;	shift := 1
-;	SetTimer TimerResetModifiers, -7000
-;	return
-;
-;!CapsLock::
-;    capsLockPressCount := 0
-;	alt := 1
-;	SetTimer TimerResetModifiers, -7000
-;	return
-;
-;^CapsLock::
-;    capsLockPressCount := 0
-;	ctrl := 1
-;	SetTimer TimerResetModifiers, -7000
-;	return
-;
-;+!CapsLock::
-;    capsLockPressCount := 0
-;	alt := 1
-;	shift := 1
-;	SetTimer TimerResetModifiers, -7000
-;	return
-;
-;^!CapsLock::
-;    capsLockPressCount := 0
-;	alt := 1
-;	ctrl := 1
-;	SetTimer TimerResetModifiers, -7000
-;	return
-;
-;+^!CapsLock::
-;    capsLockPressCount := 0
-;	alt := 1
-;	ctrl := 1
-;	shift := 1
-;	SetTimer TimerResetModifiers, -7000
-;	return
-;
-;+^CapsLock::
-;    capsLockPressCount := 0
-;	ctrl := 1
-;	shift := 1
-;	SetTimer TimerResetModifiers, -7000
-;	return
+*Tab::
+	SetModifiers()
+	if (FunctionMode)
+			SendInput {Blind}{LWin Down}{Space}{LWin Up}
+	else
+            SendInput {Blind}{Tab}
+    ResetModifiers()
+    return
 
 *Escape::
 	 SetModifiers()
@@ -281,11 +244,6 @@ TimerResetModifiers:
 *Insert::
     SetModifiers()
     SendInput {Blind}{Insert}
-    ResetModifiers()
-    return
-*Tab::
-    SetModifiers()
-    SendInput {Blind}{Tab}
     ResetModifiers()
     return
 *q::
