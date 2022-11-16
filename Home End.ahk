@@ -1,12 +1,9 @@
-; 221115
-; Refactored. Working now on press CapsLock. Also CapsLock Tab added to switch layout.
-; Timeot sent to -7000.
-; Made a great changes to control all the keys by SetModifiers and ResetModifiers
-; Now CapsLock fixes the modifier keys pressed. These keys are added to the next
-; modifier keys pressed with the target (end) key.
+; 221116
+; Refactored. Working now "on press" CapsLock.
+; Made changes to control all the keys by SetModifiers and ResetModifiers
+; Now CapsLock fixes the modifier keys pressed.
 ; CapsLock turns on Fn keys instead of 1...0-=
-; Ctrl CapsLock turns on Num keys instead of 1...0-+*/Enter
-; Fn and Num modes will reset automatically in 10 seconds if haven't used
+; Fn mode will reset automatically in 7 seconds if hasn't used
 ; Right Ctrl and left/right arrow keys let move over the words
 ; Left Ctrl and left/right arrow keys move to the begining/end of the line
 ; Right+Left Ctrl keys and left/right arrow keys move to the begining/end of the text
@@ -226,15 +223,6 @@ TimerResetModifiers:
     ResetModifiers()
     return
 
-*Tab::
-	SetModifiers()
-	if (FunctionMode)
-			SendInput {Blind}{LWin Down}{Space}{LWin Up}
-	else
-            SendInput {Blind}{Tab}
-    ResetModifiers()
-    return
-
 *Escape::
 	 SetModifiers()
 	 SendInput {Blind}{Escape}
@@ -295,7 +283,7 @@ TimerResetModifiers:
     SendInput {Blind}{p}
     ResetModifiers()
     return
-*SC01A:: ; [
+*SC01A::
     SetModifiers()
     SendInput {Blind}{SC01A}
     ResetModifiers()
@@ -461,11 +449,11 @@ return
 }
 
 ResetModifiers() {
-	global FunctionMode
     global capsLockPressCount
+	global FunctionMode
+	global shift
     global ctrl
 	global alt
-	global shift
 
 if ((shift == 1) AND (NOT GetKeyState("Shift", "P")))
 	SendInput {Blind}{Shift Up}
@@ -474,12 +462,12 @@ if ((ctrl == 1) AND (NOT GetKeyState("Ctrl", "P")))
 if ((alt == 1) AND (NOT GetKeyState("Alt", "P")) )
 	SendInput {Blind}{Alt Up}
 
-	FunctionMode := 0
     capsLockPressCount := 0
+	FunctionMode := 0
+	shift := 0
     ctrl := 0
 	alt := 0
-	shift := 0
-	
+
     SetCapsLockState, Off
 	return
 }
