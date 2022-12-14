@@ -1,4 +1,5 @@
-; 221116
+; 221214
+; Numlock can be used as CapsLock.
 ; Refactored. Working now "on press" CapsLock.
 ; Made changes to control all the keys by SetModifiers and ResetModifiers
 ; Now CapsLock fixes the modifier keys pressed.
@@ -58,6 +59,7 @@ return
 	return
 
 ;****************************************************************
+*NumLock::
 *CapsLock::
     modifiersPressed := 0
     if (GetKeyState("Shift", "P")) {
@@ -76,8 +78,8 @@ return
     if (modifiersPressed == 1)
     return
 
-	FunctionMode := 1
     SetCapsLockState, Off
+	FunctionMode := 1
     capsLockPressCount := capsLockPressCount + 1
     if (capsLockPressCount == 3) {
         capsLockPressCount := 0
